@@ -1,14 +1,7 @@
 from django.shortcuts import render
 
-from django.http import HttpResponse,JsonResponse
-
 def home(request):
-    data = {
-        "name":"Shubham",
-        "location":"mumbai"
-    }
-    return JsonResponse(data)
+   return render(request, "main.html" )
 
 
 
-# Create your views here.
