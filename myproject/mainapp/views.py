@@ -1,16 +1,28 @@
 from django.shortcuts import render
 
 def homepage(request):
-   return render(request, "main.html" )
+    context ={
+       'page':'HomePage',
+    }
+    return render(request, "main.html",context )
 
 def todolist(request):
-   return render(request, "todolist.html" )
+   context = {
+      'page':'TaskList'
+   }
+   return render(request, "todolist.html",context )
 
 def contact(request):
-   return render(request, "contact.html" )
+   context={
+      'page':'Contact'
+   }
+   return render(request, "contact.html",context )
 
 def about(request):
-   return render(request, "about.html" )
+   context = {
+      'page':'About'
+   }
+   return render(request, "about.html",context )
 
 
 
