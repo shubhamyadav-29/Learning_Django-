@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from mainapp.models import Task
 
 def homepage(request):
     context ={
@@ -7,8 +8,10 @@ def homepage(request):
     return render(request, "main.html",context )
 
 def todolist(request):
+   all_tasks = Task.objects.all()
    context = {
-      'page':'TaskList'
+      'page':'TaskList',
+      'all_tasks':all_tasks,
    }
    return render(request, "todolist.html",context )
 

@@ -2,6 +2,15 @@
 
  {% block title %}Tasklist{% endblock title %}
 
-{% block headline %}
+{% comment %} {% block headline %}
  Welcome To {{page}}
- {% endblock headline %}
+ {% endblock headline %} {% endcomment %}
+
+ {%block content%}
+    <div>
+       {% for task in all_tasks %}
+            {{task.task}} - {{task.is_completed}}
+            <br>
+      {% endfor %}
+    </div>
+ {%endblock content%}
