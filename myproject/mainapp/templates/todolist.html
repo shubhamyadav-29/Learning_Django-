@@ -7,10 +7,38 @@
  {% endblock headline %} {% endcomment %}
 
  {%block content%}
-    <div>
-       {% for task in all_tasks %}
-            {{task.task}} - {{task.is_completed}}
-            <br>
-      {% endfor %}
-    </div>
+ <div class="container">
+  <table class="table table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Task</th>
+      <th scope="col">Status</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for task in all_tasks %}
+      {% if task.is_completed %}
+      <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{task.task}}</td>
+      <td>Completed</td>
+      <td>Edit</td>
+      <td>Delete</td>
+    </tr>
+      {% else %}
+       <tr>
+         <th scope="row">{{ forloop.counter }}</th>
+         <td>{{task.task}}</td>
+         <td>Not completed</td>
+         <td>Edit</td>
+         <td>Delete</td>
+      </tr>
+     {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
+ </div>
  {%endblock content%}
