@@ -8,6 +8,15 @@
 
  {%block content%}
  <div class="container">
+  <br>
+  <form method="post">
+    {% csrf_token %}
+  <div class="mb-3">
+    <input name="task" type="text" placeholder="New Task ?" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Add Task</button>
+</form>
+  <br>
   <table class="table table-bordered">
   <thead class="table-dark">
     <tr>
@@ -21,7 +30,7 @@
   <tbody>
     {% for task in all_tasks %}
       {% if task.is_completed %}
-      <tr>
+      <tr class="table-success">
       <th scope="row">{{ forloop.counter }}</th>
       <td>{{task.task}}</td>
       <td>Completed</td>

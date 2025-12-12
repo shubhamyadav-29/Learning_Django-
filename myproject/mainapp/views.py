@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from mainapp.models import Task
+from mainapp.forms import TaskForm
 
 def homepage(request):
     context ={
@@ -8,6 +9,13 @@ def homepage(request):
     return render(request, "main.html",context )
 
 def todolist(request):
+   
+   if request.method == "POST":
+      form_data = TaskForm(request.POST or None)
+      if form_data.is_valid():
+         form_data.save()
+         return redirect("todolist")
+      
    all_tasks = Task.objects.all()
    context = {
       'page':'TaskList',
