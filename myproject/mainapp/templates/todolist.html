@@ -9,6 +9,15 @@
  {%block content%}
  <div class="container">
   <br>
+  {% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+   {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+  </button>
+</div>
+  {% endfor %}
+{% endif %}
   <form method="post">
     {% csrf_token %}
   <div class="mb-3">
@@ -20,9 +29,9 @@
   <table class="table table-bordered">
   <thead class="table-dark">
     <tr>
-      <th scope="col">#</th>
+    
       <th scope="col">Task</th>
-      <th scope="col">Status</th>
+      <th scope="col">Done</th>
       <th scope="col">Edit</th>
       <th scope="col">Delete</th>
     </tr>
@@ -31,19 +40,19 @@
     {% for task in all_tasks %}
       {% if task.is_completed %}
       <tr class="table-success">
-      <th scope="row">{{ forloop.counter }}</th>
-      <td>{{task.task}}</td>
-      <td>Completed</td>
-      <td>Edit</td>
-      <td>Delete</td>
+      
+      <td>{{task.id}} | {{task.task}}</td>
+      <td><a href="{% url 'pending_task' task.id %}">Mark as Pending</a></td>
+      <td><a href="{% url 'edit_task' task.id %}">Edit</a></td>
+      <td><a href="{% url 'delete_task' task.id %}">Delete</a></td>
     </tr>
       {% else %}
        <tr>
-         <th scope="row">{{ forloop.counter }}</th>
-         <td>{{task.task}}</td>
-         <td>Not completed</td>
-         <td>Edit</td>
-         <td>Delete</td>
+       
+         <td>{{task.id}} | {{task.task}}</td>
+         <td><a href="{% url 'complete_task' task.id %}">Marks as Completed</a></td>
+         <td><a href="{% url 'edit_task' task.id %}">Edit</a></td>
+         <td><a href="{% url 'delete_task' task.id %}">Delete</a></td>
       </tr>
      {% endif %}
     {% endfor %}
