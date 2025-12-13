@@ -2,6 +2,7 @@ from django.shortcuts import render , redirect
 from mainapp.models import Task
 from mainapp.forms import TaskForm
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 def homepage(request):
     context ={
@@ -20,6 +21,11 @@ def todolist(request):
       messages.success(request,"Something Went Wrong")
        
    all_tasks = Task.objects.all()
+   paginator=Paginator(all_tasks, 5) 
+   page = request.GET.get("page")
+   
+   all_tasks =paginator.get_page(page)
+   
    context = {
       'page':'TaskList',
       'all_tasks':all_tasks,
