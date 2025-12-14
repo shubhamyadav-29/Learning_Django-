@@ -1,7 +1,18 @@
 {%extends "base.html"%}
-
+{% load static %}
 {% block title %}HomePage{% endblock title %}
 
-{% block headline %}
- Welcome To {{page}}
- {% endblock headline %}
+{% block content %}
+ <div class="container">
+    <img src="{% static "image/Notes1.jpg" %}" alt="Notes Image" height="200" width="1100">
+
+
+ <div class="text-center mt-5">
+    <p class="h1">Quick and Eassy to access Task</p>
+    <p class="h4">Stay origanized. Stay productive</p>
+    <p>Small steps every day lead to big results.</p>
+
+    <button type="button" class="btn btn-primary">Getting Started</button>
+ </div>
+ </div>
+ {% endblock content %}

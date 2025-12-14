@@ -5,10 +5,8 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 
 def homepage(request):
-    context ={
-       'page':'HomePage',
-    }
-    return render(request, "main.html",context )
+    
+    return render(request, "main.html",{} )
 
 def todolist(request):
    
@@ -21,7 +19,7 @@ def todolist(request):
       messages.success(request,"Something Went Wrong")
        
    all_tasks = Task.objects.all()
-   paginator=Paginator(all_tasks, 5) 
+   paginator=Paginator(all_tasks, 8) 
    page = request.GET.get("page")
    
    all_tasks =paginator.get_page(page)

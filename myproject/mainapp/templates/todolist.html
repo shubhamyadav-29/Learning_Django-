@@ -27,32 +27,30 @@
 </form>
   <br>
   <table class="table table-bordered">
-  <thead class="table-dark">
-    <tr>
-    
-      <th scope="col">Task</th>
-      <th scope="col">Done</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
+  <thead class="table-dark ">
+    <tr class="row">
+      <th class="col-8" scope="col">Task</th>
+      <th class="col-2" scope="col">Done</th>
+      <th class="col-1" scope="col">Edit</th>
+      <th class="col-1" scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
     {% for task in all_tasks %}
       {% if task.is_completed %}
-      <tr class="table-success">
+      <tr class="table-success row">
       
-      <td>{{task.id}} | {{task.task}}</td>
-      <td><a href="{% url 'pending_task' task.id %}">Mark as Pending</a></td>
-      <td><a href="{% url 'edit_task' task.id %}">Edit</a></td>
-      <td><a href="{% url 'delete_task' task.id %}">Delete</a></td>
+      <td class="col-8">{{task.task}}</td>
+      <td class="col-2"><a href="{% url 'pending_task' task.id %}"><button type="button" class="btn btn-secondary">Mark as Pending</button></a></td>
+      <td class="col-1"><a href="{% url 'edit_task' task.id %}"><button type="button" class="btn btn-warning">Edit</button></a></td>
+      <td class="col-1"><a href="{% url 'delete_task' task.id %}"><button type="button" class="btn btn-danger">Delete</button></a></td>
     </tr>
       {% else %}
-       <tr>
-       
-         <td>{{task.id}} | {{task.task}}</td>
-         <td><a href="{% url 'complete_task' task.id %}">Marks as Completed</a></td>
-         <td><a href="{% url 'edit_task' task.id %}">Edit</a></td>
-         <td><a href="{% url 'delete_task' task.id %}">Delete</a></td>
+       <tr class="row">
+         <td class="col-8">{{task.task}}</td>
+         <td class="col-2"><a href="{% url 'complete_task' task.id %}"><button type="button" class="btn btn-success">Marks as Completed</button></a></td>
+         <td class="col-1"><a href="{% url 'edit_task' task.id %}"><button type="button" class="btn btn-warning">Edit</button></a></td>
+         <td class="col-1"><a href="{% url 'delete_task' task.id %}"><button type="button" class="btn btn-danger">Delete</button></a></td>
       </tr>
      {% endif %}
     {% endfor %}

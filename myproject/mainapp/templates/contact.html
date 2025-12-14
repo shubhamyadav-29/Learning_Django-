@@ -2,6 +2,59 @@
 
 {% block title %}Contact Page{% endblock title %}
 
-{% block headline %}
- Welcome To {{page}}
- {% endblock headline %}
+{% block content %}
+   <div class="container py-5">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold">Contact Us</h1>
+            <p class="text-muted">We’d love to hear from you</p>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="row g-4 justify-content-center">
+
+            <!-- Email Card -->
+            <div class="col-md-4">
+                <div class="card shadow-sm text-center h-100">
+                    <div class="card-body">
+                        <i class="bi bi-envelope-fill fs-1 text-primary mb-3"></i>
+                        <h5 class="card-title fw-semibold">Email</h5>
+                        <p class="card-text text-muted">
+                            support@example.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address Card -->
+            <div class="col-md-4">
+                <div class="card shadow-sm text-center h-100">
+                    <div class="card-body">
+                        <i class="bi bi-geo-alt-fill fs-1 text-success mb-3"></i>
+                        <h5 class="card-title fw-semibold">Address</h5>
+                        <p class="card-text text-muted">
+                           Mumbai, Maharashtra <br>
+                            India - 35232
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Card -->
+            <div class="col-md-4">
+                <div class="card shadow-sm text-center h-100">
+                    <div class="card-body">
+                        <i class="bi bi-telephone-fill fs-1 text-danger mb-3"></i>
+                        <h5 class="card-title fw-semibold">Mobile</h5>
+                        <p class="card-text text-muted">
+                            +91 962xxxxx
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ {% endblock content %}
