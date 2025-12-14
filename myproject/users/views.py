@@ -1,5 +1,4 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
 from .forms import CustomRegistrationForm
 from django.contrib import messages
 # Create your views here.
@@ -15,4 +14,9 @@ def register(request):
         register_form = CustomRegistrationForm()
     return render(request,'register.html',{'register_form':register_form})
     
-    
+
+from django.http import HttpResponse
+
+def debug_logout(request):
+    return HttpResponse(f"METHOD = {request.method}")
+
