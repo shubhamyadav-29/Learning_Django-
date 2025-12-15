@@ -3,11 +3,12 @@ from mainapp.models import Task
 from mainapp.forms import TaskForm
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 def homepage(request):
     
-    return render(request, "main.html",{} )
-
+   return render(request, "main.html",{} )
+@login_required(login_url='login')
 def todolist(request):
    
    if request.method == "POST":
