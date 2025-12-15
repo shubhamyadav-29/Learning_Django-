@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -66,13 +65,14 @@
             {% else %}
             <!-- USER IS NOT LOGGED IN -->
 
-            {% if request.resolver_match.url_name != 'login' %}
+                 {% if request.resolver_match.url_name != 'login' %}
             <li class="nav-item me-2">
               <a href="{% url 'login' %}" class="btn btn-primary btn-sm">
                 Login
               </a>
             </li>
-            {% endif %} {% if request.resolver_match.url_name != 'register' %}
+                 {% endif %} 
+            {% if request.resolver_match.url_name != 'register' %}
             <li class="nav-item">
               <a
                 href="{% url 'register' %}"
@@ -81,7 +81,8 @@
                 Sign Up
               </a>
             </li>
-            {% endif %} {% endif %}
+            {% endif %} 
+          {% endif %}
           </ul>
         </div>
       </div>

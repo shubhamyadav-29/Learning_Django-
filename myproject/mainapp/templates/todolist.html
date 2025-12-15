@@ -5,7 +5,8 @@
 {%block content%}
 <div class="container">
   <br />
-  {% if messages %} {% for message in messages %}
+  {% if messages %} 
+     {% for message in messages %}
   <div class="alert alert-info alert-dismissible fade show" role="alert">
     {{message}}
     <button
@@ -15,7 +16,9 @@
       aria-label="Close"
     ></button>
   </div>
-  {% endfor %} {% endif %}
+     {% endfor %} 
+  
+   {% endif %}
   <form method="post">
     {% csrf_token %}
     <div class="mb-3">
@@ -39,10 +42,11 @@
       </tr>
     </thead>
     <tbody>
-      {% for task in all_tasks %} {% if task.is_completed %}
-      <tr class="table-success row">
-        <td class="col-8">{{task.task}}</td>
-        <td class="col-2">
+      {% for task in all_tasks %} 
+          {% if task.is_completed %}
+            <tr class="table-success row">
+               <td class="col-8">{{task.task}}</td>
+             <td class="col-2">
           <a href="{% url 'pending_task' task.id %}"
             ><button type="button" class="btn btn-secondary">
               Mark as Pending
@@ -60,7 +64,7 @@
           >
         </td>
       </tr>
-      {% else %}
+            {% else %}
       <tr class="row">
         <td class="col-8">{{task.task}}</td>
         <td class="col-2">
@@ -81,7 +85,8 @@
           >
         </td>
       </tr>
-      {% endif %} {% endfor %}
+      {% endif %} 
+    {% endfor %}
     </tbody>
   </table>
 
