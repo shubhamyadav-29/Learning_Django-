@@ -20,12 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c7x2o60ig8plunmsud6e4t1dcp^)x(i=^lcx=c1b23r3%mo3w*'
+# SECRET_KEY = 'django-insecure-c7x2o60ig8plunmsud6e4t1dcp^)x(i=^lcx=c1b23r3%mo3w*'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-dev-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
+DEBUG = os.environ.get('DEBUG') == 'True'
 
-ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -137,7 +139,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 LOGIN_REDIRECT_URL = "todolist"
 
 ALLOWED_HOSTS = [
-    'localhost',
     '127.0.0.1',
-    '.onrender.com'
+    'localhost',
+    '.onrender.com',
 ]
