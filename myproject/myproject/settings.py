@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-c7x2o60ig8plunmsud6e4t1dcp^)x(i=^lcx=c1b23r3%mo3w*'
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-dev-key')
+SECRET_KEY = 'django-insecure-c7x2o60ig8plunmsud6e4t1dcp^)x(i=^lcx=c1b23r3%mo3w*'
+# SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-dev-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
-DEBUG = os.environ.get('DEBUG') == 'True'
+DEBUG = False
+# DEBUG = os.environ.get('DEBUG') == 'True'
 
 
 
@@ -53,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'myproject.urls'
@@ -123,11 +125,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
-
-
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+
+ALLOWED_HOSTS = ['*']
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -137,9 +141,3 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 LOGIN_REDIRECT_URL = "todolist"
-
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    '.onrender.com',
-]
